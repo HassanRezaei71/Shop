@@ -12,7 +12,9 @@ export default function ResponsiveNav({ showSidebar, sidebar }) {
   useEffect(() => {
     api
       .get("products/categories")
-      .then((res) => (console.log("categories", res.data), setCategories(res.data)));
+      .then(
+        (res) => (console.log("categories", res.data), setCategories(res.data))
+      );
   }, []);
   return (
     <>
@@ -21,7 +23,7 @@ export default function ResponsiveNav({ showSidebar, sidebar }) {
           <Col>
             <div className="bar-container">
               <div className="bar-icon-container">
-                <Link to="/" onClick={showSidebar}>
+                <Link to="/" onClick={() => showSidebar()}>
                   <FontAwesomeIcon icon="bars" className="bar-icon" size="lg" />
                 </Link>
               </div>
@@ -38,17 +40,21 @@ export default function ResponsiveNav({ showSidebar, sidebar }) {
               </div>
               <div>
                 <Link to="/">
-                  <FontAwesomeIcon icon="question" className="question-icon" size="lg" />
+                  <FontAwesomeIcon
+                    icon="question"
+                    className="question-icon"
+                    size="lg"
+                  />
                 </Link>
               </div>
             </div>
           </Col>
         </Row>
       </Container>
-      <nav className={sidebar ? "nav-menu-active" : "nav-menu"}>
+      <nav className={`nav-menu ${sidebar && "nav-menu-active"}`}>
         <ul className="nav-menu-items">
           <li className="navbar-toggle">
-            <Link onClick={showSidebar} to="#" className="links">
+            <Link onClick={() => showSidebar()} to="#" className="links">
               <FontAwesomeIcon icon="times" className="times-icon" size="lg" />
             </Link>
           </li>
@@ -57,7 +63,7 @@ export default function ResponsiveNav({ showSidebar, sidebar }) {
               <Link
                 to={`/category/${category.id}`}
                 className="category-title"
-                onClick={showSidebar}
+                onClick={() => showSidebar()}
               >
                 <img src={category.image.src} className="category-icon" />
                 <span className="category-name">{category.name}</span>
