@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { Col, Container, Row } from "reactstrap";
 import api from "../../api/api";
 import Categories from "../../Categories/Categories";
+import "./Home.scss";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
@@ -18,20 +20,21 @@ export default function Home() {
   };
 
   return (
-    <div>
+    <>
       <Categories />
-      <p>1234564حسن رضایی</p>
-      {pending ? (
-        <h1>Loading...</h1>
-      ) : (
-        products.map((product) => (
-          <div key={product.id}>
-            <p>{product.name}</p>
-            <img src={product.images[0].src} />
-            <div dangerouslySetInnerHTML={createMarkup(product)}></div>
-          </div>
-        ))
-      )}
-    </div>
+      <Container>
+        <Row>
+          {products.map((product) => (
+            <Col>
+              <div key={product.id} className="product-item-container">
+                <img src={product.images[0].src} className="product-image" />
+                <p className="product-name">{product.name}</p>
+                <div className="product-detail" dangerouslySetInnerHTML={createMarkup(product)}></div>
+              </div>
+            </Col>
+          ))}
+        </Row>
+      </Container>
+    </>
   );
 }
