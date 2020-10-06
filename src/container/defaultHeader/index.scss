@@ -1,8 +1,7 @@
 $color: rgb(168, 168, 168);
 
 .nav-bar {
-  // height: 60px;
-  padding: 10px 0;
+  padding: 10px 0 5px 0;
   direction: rtl;
   @media (max-width: 662px) {
     padding: 0;
@@ -76,7 +75,7 @@ Link {
 .search-input {
   width: 25rem !important;
   @media (max-width: 665px) {
-    width: 18rem !important;
+    width: 14rem !important;
   }
 }
 

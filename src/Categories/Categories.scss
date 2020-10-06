@@ -3,7 +3,6 @@ $color: #616161;
 .category-container {
   display: flex;
   align-items: center;
-  padding: 10px 0;
   @media (max-width: 700px) {
     display: none;
   }
@@ -11,6 +10,8 @@ $color: #616161;
     list-style-type: none;
     display: flex;
     justify-content: flex-end;
+    padding: 0;
+    margin: 5px 0;
     li {
       padding: 9px;
       &:after {
@@ -44,4 +45,9 @@ $color: #616161;
     height: 20px;
     margin: 0 5px;
   }
+}
+
+.spinner {
+  width: 100%;
+  text-align: center;
 }

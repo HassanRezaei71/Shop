@@ -1,0 +1,31 @@
+.card{
+    text-align: right;
+}
+
+.card-image{
+    margin: 10px auto;
+    width: 170px;
+    height: 200px;
+}
+
+.show-price{
+    direction: rtl;
+}
+
+.price{
+    display: flex;
+    direction: ltr;
+    font-size: 0.85rem;
+}
+
+.toman{
+    margin-right: 5px;
+}
+
+.product-title{
+    font-size: 0.93rem;
+}
+
+.price-text{
+    font-size: 0.85rem;
+}

@@ -2,18 +2,21 @@ import React, { useState, useEffect } from "react";
 import { Col, Container, Row } from "reactstrap";
 import api from "../../api/api";
 import Categories from "../../Categories/Categories";
+import MyCarousel from "../../Component/Carousel/MyCarousel";
+import { Spinner } from "reactstrap";
+import MyCard from '../../Component/Card/MyCard'
 import "./Home.scss";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
-  const [pending, setPending] = useState(true);
+  const [pending, setPending] = useState(false);
   const [filters, setFilters] = useState({
     orderby: "title",
     page: 1,
-    per_page: 10,
   });
 
   useEffect(() => {
+    setPending(true);
     api
       .get("products", { ...filters })
       .then(
@@ -28,22 +31,19 @@ export default function Home() {
   return (
     <>
       <Categories />
+      <MyCarousel  />
+      <div className="home">
       <Container>
+      {pending && <div class="spinner" style={{padding: '10px 0'}}><Spinner color="info" /></div>}
         <Row>
           {products.map((product, index) => (
-            <Col key={index}>
-              <div key={product.id} className="product-item-container">
-                <img src={product.images[0].src} className="product-image" />
-                <p className="product-name">{product.name}</p>
-                <div
-                  className="product-detail"
-                  dangerouslySetInnerHTML={createMarkup(product)}
-                ></div>
-              </div>
+            <Col key={index} sm="6" lg="3" className="product-col-item">
+            <MyCard key={product.id} className="product-item-container" product={product} />
             </Col>
           ))}
         </Row>
       </Container>
+      </div>
     </>
   );
 }

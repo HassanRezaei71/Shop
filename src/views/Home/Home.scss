@@ -1,16 +1,13 @@
-.product-item-container {
+.home {
+  background-color: #f4f4f4;
+  padding: 10px 0;
+}
+
+.spinner {
+  width: 100%;
   text-align: center;
 }
 
-.product-image {
-  width: 200px;
-  height: 200px;
-}
-
-.product-name {
-  text-align: right;
-}
-
-.product-detail{
-    text-align: right;
+.product-col-item{
+  padding: 10px;
 }
