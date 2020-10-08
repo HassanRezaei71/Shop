@@ -52,7 +52,7 @@ export default function DefaultHeader() {
                 <span className="login-text"> حساب کاربری</span>
               </Link>
               <span className="cln-between"></span>
-              <Link to="/" className="shopping-cart" >
+              <Link to="/shopingcart" className="shopping-cart" >
                 <FontAwesomeIcon icon={"shopping-cart"} size="lg" />
               </Link>
             </div>

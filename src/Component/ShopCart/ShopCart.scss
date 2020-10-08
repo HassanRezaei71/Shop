@@ -1,0 +1,44 @@
+.shop-cart{
+    direction: rtl;
+    width: 100%;
+    display: flex;
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px 0;
+    .shop-cart-image{
+      width: 20%;
+      img{
+        width: 100%;
+      }
+    }
+    .shop-cart-info{
+      width: 80%;
+      h5{
+        padding-bottom: 10px;
+      }
+      h6{
+        padding-bottom: 10px;
+      }
+      .increase{
+        padding: 5px 10px;
+        border: none;
+        background-color: lightseagreen;
+        border-radius: 5px;
+      }
+      .decrease{
+        padding: 5px 12px;
+        border: none;
+        background-color: lightsalmon;
+        border-radius: 5px;
+      }
+      .count{
+        padding: 0 10px;
+      }
+      .total-cart-price{
+        padding: 10px 0 0;
+      }
+    }
+  }
+  

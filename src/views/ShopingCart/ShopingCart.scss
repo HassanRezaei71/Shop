@@ -1,0 +1,12 @@
+.shoping-cart {
+  text-align: right;
+  background-color: #f4f4f4;
+  padding: 10px 0;
+  min-height: calc(100vh - 490px);
+  .shoping-cart-container{
+      padding: 20px;
+      .cart-title{
+          padding-bottom: 12px;
+      }
+  }
+}

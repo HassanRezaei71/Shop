@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Redirect, useHistory, useParams } from "react-router-dom";
 import Categories from "../../Categories/Categories";
 import "./product.scss";
 import api from "../../api/api";
 import { Spinner } from "reactstrap";
+import { connect } from "react-redux";
+import { addToBasket } from "../../Redux/Basket/BasketActions.js";
 
 const createMarkup = (product) => {
   return { __html: product.description };
 };
 
-export default function SingleProduct() {
+function SingleProduct({ addToBasket }) {
+  const history = useHistory();
   const { id } = useParams();
   const [item, setItem] = useState([]);
   console.log("item", item);
@@ -20,6 +23,10 @@ export default function SingleProduct() {
       .get(`products/${id}`)
       .then((res) => (setItem(res.data), setPending(false)));
   }, []);
+  const handleToBascket = (item) => {
+    addToBasket(item);
+    history.push("/shopingcart");
+  };
   return (
     <>
       <Categories />
@@ -41,10 +48,19 @@ export default function SingleProduct() {
             <h4>{item.name}</h4>
             {!pending && <h5>ویژگی های محصول</h5>}
             <div dangerouslySetInnerHTML={createMarkup(item)}></div>
-            {!pending && <button className="add-cart">افزودن به سبد خرید</button>}
+            {!pending && (
+              <button
+                className="add-cart"
+                onClick={() => handleToBascket(item)}
+              >
+                افزودن به سبد خرید
+              </button>
+            )}
           </div>
         </div>
       </div>
     </>
   );
 }
+
+export default connect(null, { addToBasket })(SingleProduct);
