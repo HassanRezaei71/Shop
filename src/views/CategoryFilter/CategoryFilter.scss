@@ -5,4 +5,10 @@
 .category {
   background-color: #f4f4f4;
   padding: 10px 0;
+  min-height: calc(100vh - 509.9px);
+}
+
+.spinner {
+  width: 100%;
+  text-align: center;
 }

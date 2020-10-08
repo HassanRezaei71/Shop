@@ -9,7 +9,6 @@ export default function DefaultContainer() {
   return (
     <div>
       <Header />
-      <Router>
         <Switch>
           <React.Suspense
             fallback={
@@ -28,7 +27,6 @@ export default function DefaultContainer() {
             ))}
           </React.Suspense>
         </Switch>
-      </Router>
       <Footer />
     </div>
   );

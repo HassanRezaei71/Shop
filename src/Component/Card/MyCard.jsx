@@ -9,6 +9,7 @@ import {
   CardSubtitle,
   Button,
 } from "reactstrap";
+import { Link } from "react-router-dom";
 
 function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -18,6 +19,7 @@ const MyCard = ({ product }) => {
   console.log(product);
   return (
     <div>
+    <Link to={`/product/${product.id}`} className="product-link">
       <Card className="card">
         <CardImg
           src={product.images[0].src}
@@ -27,11 +29,11 @@ const MyCard = ({ product }) => {
         <CardBody>
           <CardTitle className="product-title">{product.name}</CardTitle>
           <CardText className="show-price">
-          <span className="price"><div className="toman">تومان</div> <div>{numberWithCommas(product.price)}</div></span>
+          <span className="price"><span className="toman">تومان</span> <span>{numberWithCommas(product.price)}</span></span>
           </CardText>
-          <Button>خرید</Button>
         </CardBody>
       </Card>
+      </Link>
     </div>
   );
 };

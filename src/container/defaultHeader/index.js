@@ -27,7 +27,7 @@ export default function DefaultHeader() {
         <Row>
           <Col xs={8} className="nav-items nav-items-right">
             <div className="search-container">
-              <Link to={`/`}>
+              <Link to="/">
                 <img
                   src={logo}
                   className="logo"
@@ -47,12 +47,12 @@ export default function DefaultHeader() {
           </Col>
           <Col xs={4} className="nav-items nav-items-left">
             <div className="login-cart-container">
-              <Link to="/" className="btn-login-container" exact>
+              <Link to="/" className="btn-login-container">
                 <FontAwesomeIcon icon="user" size="lg" />
                 <span className="login-text"> حساب کاربری</span>
               </Link>
               <span className="cln-between"></span>
-              <Link to="/" className="shopping-cart" exact>
+              <Link to="/" className="shopping-cart" >
                 <FontAwesomeIcon icon={"shopping-cart"} size="lg" />
               </Link>
             </div>

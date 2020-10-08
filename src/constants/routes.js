@@ -1,5 +1,6 @@
 import React from "react";
 
+
 const Home = React.lazy(() => import("../views/Home/Home"));
 const Product = React.lazy(() => import("../views/Product/product"));
 const CategoryFilter = React.lazy(() =>
@@ -7,9 +8,9 @@ const CategoryFilter = React.lazy(() =>
 );
 
 const routes = [
-  { path: "/", exact: "true", component: Home },
-  { path: "/product/:id", component: Product },
-  { path: "/category/:slug", component: CategoryFilter },
+  { path: "/product/:id", exact: false, component: Product },
+  { path: "/category/:slug", exact: false, component: CategoryFilter },
+  { path: "/", exact: true, component: Home },
 ];
 
 export default routes;

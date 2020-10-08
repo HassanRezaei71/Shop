@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import api from "../../api/api";
 import { useParams } from "react-router-dom";
 import Categories from "../../Categories/Categories";
@@ -8,15 +8,15 @@ import MyCard from "../../Component/Card/MyCard";
 import "./CategoryFilter.scss";
 
 export default function CategoryFilter() {
+  const { slug } = useParams();
   const [products, setProducts] = useState([]);
   const [pending, setPendig] = useState(false);
-  const { slug } = useParams();
   const [filter, setFilter] = useState({
     category: slug,
   });
   useEffect(() => {
+    setProducts([]);
     setPendig(true);
-    console.log(products, "products");
     api
       .get("products", { ...filter, category: slug })
       .then((res) => setProducts(res.data), setPendig(false));
@@ -32,7 +32,7 @@ export default function CategoryFilter() {
       <div className="category">
         <Container>
           {pending && (
-            <div class="spinner" style={{ padding: "10px 0" }}>
+            <div className="spinner" style={{ padding: "10px 0" }}>
               <Spinner color="info" />
             </div>
           )}

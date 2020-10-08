@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Col, Container, Row } from "reactstrap";
 import api from "../../api/api";
 import Categories from "../../Categories/Categories";
-import MyCarousel from "../../Component/Carousel/MyCarousel";
+// import MyCarousel from "../../Component/Carousel/MyCarousel";
 import { Spinner } from "reactstrap";
-import MyCard from '../../Component/Card/MyCard'
+import MyCard from "../../Component/Card/MyCard";
 import "./Home.scss";
 
 export default function Home() {
@@ -19,9 +19,7 @@ export default function Home() {
     setPending(true);
     api
       .get("products", { ...filters })
-      .then(
-        (res) => (console.log(res), setProducts(res.data), setPending(false))
-      );
+      .then((res) => (setProducts(res.data), setPending(false)));
   }, []);
 
   const createMarkup = (product) => {
@@ -31,18 +29,26 @@ export default function Home() {
   return (
     <>
       <Categories />
-      <MyCarousel  />
+        
       <div className="home">
-      <Container>
-      {pending && <div class="spinner" style={{padding: '10px 0'}}><Spinner color="info" /></div>}
-        <Row>
-          {products.map((product, index) => (
-            <Col key={index} sm="6" lg="3" className="product-col-item">
-            <MyCard key={product.id} className="product-item-container" product={product} />
-            </Col>
-          ))}
-        </Row>
-      </Container>
+        <Container>
+          {pending && (
+            <div className="spinner" style={{ padding: "10px 0" }}>
+              <Spinner color="info" />
+            </div>
+          )}
+          <Row>
+            {products.map((product, index) => (
+              <Col key={index} sm="6" lg="3" className="product-col-item">
+                <MyCard
+                  key={product.id}
+                  className="product-item-container"
+                  product={product}
+                />
+              </Col>
+            ))}
+          </Row>
+        </Container>
       </div>
     </>
   );
