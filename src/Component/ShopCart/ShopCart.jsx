@@ -24,16 +24,12 @@ export default function shopCart({ shopCart, increaseCount, decreaseCount }) {
           <button
             className="increase"
             onClick={() => increaseCount(shopCart.id)}
-          >
-            +
-          </button>
+          >+</button>
           <span className="count">{shopCart.count}</span>
           <button
             className="decrease"
             onClick={() => decreaseCount(shopCart.id)}
-          >
-            -
-          </button>
+          >-</button>
         </div>
         <div className="total-cart-price">
           <span>

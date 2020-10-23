@@ -10,16 +10,18 @@ import "./CategoryFilter.scss";
 export default function CategoryFilter() {
   const { slug } = useParams();
   const [products, setProducts] = useState([]);
-  const [pending, setPendig] = useState(false);
+  const [pending, setPending] = useState(false);
   const [filter, setFilter] = useState({
     category: slug,
   });
+
   useEffect(() => {
+    setPending(true);
     setProducts([]);
-    setPendig(true);
     api
       .get("products", { ...filter, category: slug })
-      .then((res) => setProducts(res.data), setPendig(false));
+      .then((res) => setProducts(res.data))
+      .then((res) => setPending(false));
   }, [slug]);
 
   const createMarkup = (product) => {
@@ -29,7 +31,7 @@ export default function CategoryFilter() {
   return (
     <div>
       <Categories />
-      <div className="category">
+      <div className="category-items">
         <Container>
           {pending && (
             <div className="spinner" style={{ padding: "10px 0" }}>
@@ -52,15 +54,3 @@ export default function CategoryFilter() {
     </div>
   );
 }
-
-// <Row>
-//         {products.map((product) => (
-//           <Col key={product.id}>
-//             <p>{product.name}</p>
-//             <img src={product.images[0].src} width="300px" />
-//             <div
-//               dangerouslySetInnerHTML={createMarkup(product.description)}
-//             ></div>
-//           </Col>
-//         ))}
-//       </Row>

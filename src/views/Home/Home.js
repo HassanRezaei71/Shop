@@ -1,53 +1,61 @@
-import React, { useState, useEffect } from "react";
-import { Col, Container, Row } from "reactstrap";
-import api from "../../api/api";
+import React from "react";
+import { Container} from "reactstrap";
 import Categories from "../../Categories/Categories";
-// import MyCarousel from "../../Component/Carousel/MyCarousel";
-import { Spinner } from "reactstrap";
-import MyCard from "../../Component/Card/MyCard";
+import MyCarousel from "../../Component/Carousel/MyCarousel";
+import banner1 from "../../assets/images/banner1.gif";
+import banner2 from "../../assets/images/banner2.jpg";
+import Amazing from '../../Component/Amazing/Amazing';
+import BestSeller from '../../Component/BestSeller/BestSeller';
 import "./Home.scss";
 
 export default function Home() {
-  const [products, setProducts] = useState([]);
-  const [pending, setPending] = useState(false);
-  const [filters, setFilters] = useState({
-    orderby: "title",
-    page: 1,
-  });
+  // const [products, setProducts] = useState([]);
+  // const [pending, setPending] = useState(false);
+  // const [filters, setFilters] = useState({
+  //   orderby: "top_sellers",
+  //   page: 1,
+  // });
 
-  useEffect(() => {
-    setPending(true);
-    api
-      .get("products", { ...filters })
-      .then((res) => (setProducts(res.data), setPending(false)));
-  }, []);
+  // useEffect(() => {
+  //   setPending(true);
+  //   api
+  //     .get("products", { ...filters })
+  //     .then((res) => setProducts(res.data))
+  //     .then((res) => setPending(false));
+  // }, []);
 
-  const createMarkup = (product) => {
-    return { __html: product.description };
-  };
+  // const createMarkup = (product) => {
+  //   return { __html: product.description };
+  // };
 
   return (
     <>
-      <Categories />
-        
+      <div>
+        <Categories />
+      </div>
+      <div className="home-carousel-container">
+        <div className="home-carousel">
+          <MyCarousel />
+        </div>
+      </div>
       <div className="home">
         <Container>
-          {pending && (
-            <div className="spinner" style={{ padding: "10px 0" }}>
-              <Spinner color="info" />
+          <div className="baner-container">
+            <div className="banner-1">
+              <img src={banner1} alt="banner-1" />
             </div>
-          )}
-          <Row>
-            {products.map((product, index) => (
-              <Col key={index} sm="6" lg="3" className="product-col-item">
-                <MyCard
-                  key={product.id}
-                  className="product-item-container"
-                  product={product}
-                />
-              </Col>
-            ))}
-          </Row>
+            <div className="banner-2">
+              <img src={banner2} alt="banner-2" />
+            </div>
+          </div>
+          <div className="amazing-box">
+            <div className="title">پیشنهاد ویژه</div>
+            <Amazing />
+          </div>
+          <div className="best-seller-box">
+            <div className="title">پرفروش ترین ها</div>
+            <BestSeller />
+          </div>
         </Container>
       </div>
     </>

@@ -16,7 +16,6 @@ function numberWithCommas(x) {
 }
 
 const MyCard = ({ product }) => {
-  console.log(product);
   return (
     <div>
     <Link to={`/product/${product.id}`} className="product-link">

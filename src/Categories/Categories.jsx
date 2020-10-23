@@ -11,24 +11,18 @@ export default function Categories() {
   useEffect(() => {
     setPending(true);
     api
-      .get("products/categories")
-      .then(
-        (res) => (
-          console.log("categories", res),
-          setCategories(res.data),
-          setPending(false)
-        )
-      );
+      .get(`products/categories`)
+      .then((res) => (setCategories(res.data), setPending(false)));
   }, []);
   return (
-    <Container fluid={true}>
+    <Container fluid={true} className="category-info">
+      {pending && (
+        <div className="spinner" style={{ padding: "10px 0" }}>
+          <Spinner color="info" />
+        </div>
+      )}
       <Row className="category-container">
         <Col>
-        {pending && (
-          <div className="spinner">
-            <Spinner color="info" />
-          </div>
-        )}
           <ul>
             {categories.map((category) => (
               <li key={category.id} className="category-col">
@@ -37,7 +31,11 @@ export default function Categories() {
                   className="category-title"
                 >
                   <span className="category-name">{category.name}</span>
-                  <img src={category.image.src} className="category-icon" />
+                  <img
+                    src={category.image.src}
+                    className="category-icon"
+                    alt="icon"
+                  />
                 </Link>
               </li>
             ))}
