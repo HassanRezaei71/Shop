@@ -15,6 +15,8 @@ export default function CategoryFilter() {
     category: slug,
   });
 
+  console.log(products);
+
   useEffect(() => {
     setPending(true);
     setProducts([]);
@@ -39,15 +41,18 @@ export default function CategoryFilter() {
             </div>
           )}
           <Row>
-            {products.map((product, index) => (
-              <Col key={index} sm="6" lg="3" className="product-col-item">
-                <MyCard
-                  key={product.id}
-                  className="product-item-container"
-                  product={product}
-                />
-              </Col>
-            ))}
+            {products.map(
+              (product, index) =>
+                product.name !== "تخفیفات" && (
+                  <Col key={index} sm="6" lg="3" className="product-col-item">
+                    <MyCard
+                      key={product.id}
+                      className="product-item-container"
+                      product={product}
+                    />
+                  </Col>
+                )
+            )}
           </Row>
         </Container>
       </div>

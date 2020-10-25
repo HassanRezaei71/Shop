@@ -1,25 +1,25 @@
-.card {
+.small-card {
     text-align: right;
     transition: all 0.3s;
     width: 240px;
-    height: 400px;
+    height: 370px;
     margin: 10px 5px;
     &:hover {
       box-shadow: 0px 0px 6px 1px #a1a1a1;
       transform: translateY(-4px);
     }
     @media (max-width: 750px) {
-      margin: 0 5px;
+      margin: 8px 5px;
     }
   }
   
-  .card-image {
+  .small-card-image {
     padding: 10px;
     height: 230px;
     object-fit: cover;
   }
   
-  .show-price {
+  .small-show-price {
     direction: rtl;
   }
   
@@ -34,7 +34,7 @@
     margin-right: 5px;
   }
   
-  .product-title {
+  .small-product-title {
     font-size: 0.85rem;
     line-height: 1.7;
   }

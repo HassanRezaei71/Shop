@@ -1,63 +1,128 @@
-.product-container{
-    width: 100%;
-    direction: rtl;
-    background-color: #f4f4f4;
-    min-height: calc(100vh - 510px);
-    .product-content{
-        min-height: calc(100vh - 509.9px);
-        display: flex;
-        align-items: stretch;
-        @media (max-width:750px) {
-            display: flex;
-            flex-direction: column;
-        }
-        .product-image-continer{
-            width: 35%;
-            padding: 30px 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            img{
-                border: 1px solid rgb(175, 175, 175);
-                border-radius: 5px;
-                width: 90%;
-            }
-            @media (max-width:750px) {
-                width: 100%;
-                text-align: center;
-                padding: 30px 20px 0px;
-                img{
-                    width: 80%;
-                }
-            }
-        }
-        .product-info{
-            width: 65%;
-            padding: 30px 40px;
-            text-align: right;
-            h4{
-                margin-bottom: 20px;
-            }
-            h5{
-                margin: 20px 0;
-            }
-            @media (max-width:750px) {
-                width: 100%;
-            }
-        }
-        .add-cart{
-            background-color: #ef394e;
-            border: 1px solid #ef394e;
-            border-radius: 6px;
-            width: 12rem;
-            color: white;
-            font-size: 0.89rem;
-            padding: 10px 30px;
-            font-weight: bold;
-            margin-top: 10px;
-            &:focus{
-                outline: none;
-            }
-        }
+.product-container {
+  width: 100%;
+  direction: rtl;
+  background-color: #f4f4f4;
+  min-height: calc(100vh - 510px);
+  .product-content {
+    min-height: calc(100vh - 509.9px);
+    display: flex;
+    align-items: stretch;
+    @media (max-width: 750px) {
+      display: flex;
+      flex-direction: column;
     }
+    .product-image-continer {
+      width: 35%;
+      padding: 30px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        background-color: white;
+        padding: 12px 0;
+        border: 1px solid rgb(175, 175, 175);
+        border-radius: 5px;
+        width: 90%;
+        object-fit: contain;
+        height: 300px;
+      }
+      @media (max-width: 750px) {
+        width: 100%;
+        text-align: center;
+        padding: 30px 20px 0px;
+        img {
+          width: 80%;
+        }
+      }
+    }
+    .product-info {
+      width: 65%;
+      padding: 30px 40px;
+      text-align: right;
+      h4 {
+        margin-bottom: 20px;
+        line-height: 1.5;
+      }
+      h5 {
+        margin: 20px 0;
+      }
+      @media (max-width: 750px) {
+        width: 100%;
+      }
+    }
+    .add-cart {
+      background-color: #ef394e;
+      border: 1px solid #ef394e;
+      border-radius: 6px;
+      width: 12rem;
+      color: white;
+      font-size: 0.89rem;
+      padding: 10px 30px;
+      font-weight: bold;
+      margin-top: 10px;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  .comment-title-container {
+    text-align: right;
+    background-color: #f4f4f4;
+    padding-bottom: 10px;
+    .comment-title {
+      display: flex;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+      .comment-line {
+        margin-right: 10px;
+        width: 100%;
+        height: 1px;
+        background-color: lightgray;
+      }
+    }
+  }
+  .comment-content {
+    width: 600px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    textarea {
+      resize: none;
+      height: 100px;
+      margin-bottom: 10px;
+      padding: 5px 10px;
+      border: 1px solid lightgray;
+      &:focus {
+        outline: none;
+      }
+    }
+    @media (max-width: 750px) {
+      width: 100%;
+    }
+    .comment-inputs {
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      input {
+        width: 49%;
+        padding: 5px 10px;
+        border: 1px solid lightgray;
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+  .btn-submit-container {
+    text-align: right;
+    .btn-submit {
+      width: 100px;
+      background-color: #4a525d;
+      color: white;
+      border: none;
+      padding: 5px;
+      margin-bottom: 20px;
+    }
+  }
 }

@@ -1,1 +1,11 @@
 @import '~react-awesome-slider/dist/styles.css';
+
+.awssld__bullets{
+    button{
+        width: 11px;
+        height: 11 px;
+    }
+    .awssld__bullets--active{
+        transform: scale(1.3);
+    }
+}

@@ -3,7 +3,7 @@ import { Redirect, useHistory, useParams } from "react-router-dom";
 import Categories from "../../Categories/Categories";
 import "./product.scss";
 import api from "../../api/api";
-import { Spinner } from "reactstrap";
+import { Container, Spinner } from "reactstrap";
 import { connect } from "react-redux";
 import { addToBasket } from "../../Redux/Basket/BasketActions.js";
 
@@ -15,6 +15,9 @@ function SingleProduct({ addToBasket }) {
   const history = useHistory();
   const { id } = useParams();
   const [item, setItem] = useState([]);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [comment, setComment] = useState("");
   console.log("item", item);
   const [pending, setPending] = useState(false);
   useEffect(() => {
@@ -31,33 +34,79 @@ function SingleProduct({ addToBasket }) {
     <>
       <Categories />
       <div className="product-container">
-        {pending && (
-          <div className="spinner" style={{ padding: "10px 0" }}>
-            <Spinner color="info" />
-          </div>
-        )}
-        <div className="product-content">
-          <div className="product-image-continer">
-            <div>
-              {item && item.images && (
-                <img src={item.images[0].src} alt={item.name} />
+        <Container>
+          {pending && (
+            <div className="spinner" style={{ padding: "10px 0" }}>
+              <Spinner color="info" />
+            </div>
+          )}
+          <div className="product-content">
+            <div className="product-image-continer">
+              <div>
+                {item && item.images && (
+                  <img src={item.images[0].src} alt={item.name} />
+                )}
+              </div>
+            </div>
+            <div className="product-info">
+              <h4>{item.name}</h4>
+              {!pending && <h5>ویژگی های محصول</h5>}
+              <div dangerouslySetInnerHTML={createMarkup(item)}></div>
+              {!pending && (
+                <button
+                  className="add-cart"
+                  onClick={() => handleToBascket(item)}
+                >
+                  افزودن به سبد خرید
+                </button>
               )}
             </div>
           </div>
-          <div className="product-info">
-            <h4>{item.name}</h4>
-            {!pending && <h5>ویژگی های محصول</h5>}
-            <div dangerouslySetInnerHTML={createMarkup(item)}></div>
+          <div className="comment-container">
             {!pending && (
-              <button
-                className="add-cart"
-                onClick={() => handleToBascket(item)}
-              >
-                افزودن به سبد خرید
-              </button>
+              <Container xl>
+                <div className="comment-title-container">
+                  <p className="comment-title">
+                    نظرات<span className="comment-line"></span>
+                  </p>
+                </div>
+                <form>
+                  <div className="comment-content">
+                    <textarea
+                      placeholder="دیدگاه..."
+                      name="comment"
+                      value={comment}
+                      onChange={(e) => setComment(e.target.value)}
+                    />
+                    <div className="comment-inputs">
+                      <input
+                        type="text"
+                        name="name"
+                        placeholder="نام"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                      />
+                      <input
+                        type="email"
+                        name="email"
+                        placeholder="ایمیل"
+                        value={email}
+                        required
+                        onChange={(e) => setEmail(e.target.value)}
+                      />
+                    </div>
+                    <div className="btn-submit-container">
+                      <button type="submit" className="btn-submit">
+                        درج نظر
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </Container>
             )}
           </div>
-        </div>
+        </Container>
       </div>
     </>
   );
