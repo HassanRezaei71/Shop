@@ -30,6 +30,9 @@ function SingleProduct({ addToBasket }) {
     addToBasket(item);
     history.push("/shopingcart");
   };
+  const handleSubmit = ()=>{
+    
+  }
   return (
     <>
       <Categories />

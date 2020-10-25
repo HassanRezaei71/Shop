@@ -1,5 +1,5 @@
 .card {
-  width: 100%;
+  min-width: 200px;
   text-align: right;
   transition: all 0.3s;
   height: 370px;
@@ -15,10 +15,9 @@
 
 .card-image {
   margin: 5px auto;
-  padding: 5px 0;
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
+  width: 220px;
+  height: 220px;
+  object-fit: contain;
 }
 
 .show-price {
@@ -53,4 +52,8 @@
     color: inherit;
     text-decoration: none;
   }
+}
+
+.card-body{
+  padding: 15px;
 }
